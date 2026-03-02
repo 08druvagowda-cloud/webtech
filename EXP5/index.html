@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Super Calculator</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1f1c2c, #928dab);
+}
+
+.calculator {
+    width: 340px;
+    padding: 25px;
+    border-radius: 25px;
+    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.display {
+    width: 100%;
+    height: 70px;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    border-radius: 15px;
+    text-align: right;
+    padding: 15px;
+    font-size: 28px;
+    color: white;
+    margin-bottom: 20px;
+    outline: none;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+button {
+    height: 60px;
+    border-radius: 15px;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: rgba(255,255,255,0.2);
+    color: white;
+}
+
+button:hover {
+    transform: scale(1.08);
+    background: rgba(255,255,255,0.35);
+}
+
+.operator {
+    background: #ff8c00;
+}
+
+.operator:hover {
+    background: #ffa733;
+}
+
+.equal {
+    grid-column: span 2;
+    background: #00c896;
+}
+
+.equal:hover {
+    background: #00e0a8;
+}
+
+.clear {
+    background: #ff4d6d;
+}
+
+.clear:hover {
+    background: #ff6b85;
+}
+</style>
+</head>
+
+<body>
+
+<div class="calculator">
+    <input type="text" class="display" id="display" readonly>
+
+    <div class="buttons">
+        <button class="clear" onclick="clearDisplay()">C</button>
+        <button class="operator" onclick="append('%')">%</button>
+        <button class="operator" onclick="append('/')">÷</button>
+        <button class="operator" onclick="append('*')">×</button>
+
+        <button onclick="append('7')">7</button>
+        <button onclick="append('8')">8</button>
+        <button onclick="append('9')">9</button>
+        <button class="operator" onclick="append('-')">−</button>
+
+        <button onclick="append('4')">4</button>
+        <button onclick="append('5')">5</button>
+        <button onclick="append('6')">6</button>
+        <button class="operator" onclick="append('+')">+</button>
+
+        <button onclick="append('1')">1</button>
+        <button onclick="append('2')">2</button>
+        <button onclick="append('3')">3</button>
+        <button class="equal" onclick="calculate()">=</button>
+
+        <button onclick="append('0')">0</button>
+        <button onclick="append('.')">.</button>
+    </div>
+</div>
+
+<script>
+const display = document.getElementById("display");
+
+function append(value) {
+    display.value += value;
+}
+
+function clearDisplay() {
+    display.value = "";
+}
+
+function calculate() {
+    try {
+        display.value = Function("return " + display.value)();
+    } catch {
+        display.value = "Error";
+    }
+}
+
+// Keyboard support
+document.addEventListener("keydown", function(event) {
+    if (!isNaN(event.key) || "+-*/.%".includes(event.key)) {
+        append(event.key);
+    }
+    if (event.key === "Enter") {
+        calculate();
+    }
+    if (event.key === "Backspace") {
+        display.value = display.value.slice(0, -1);
+    }
+});
+</script>
+
+</body>
+</html>
