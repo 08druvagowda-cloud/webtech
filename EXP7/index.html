@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>WT Student & Market Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Student & Market Dashboard</h1>
+
+<div class="buttons">
+
+<button onclick="printNames()">Print All Student Names</button>
+
+<button onclick="marksAbove80()">Students With Marks > 80</button>
+
+<button onclick="countCourse()">Count Students In Each Course</button>
+
+<button onclick="printCSE()">Show Only CSE Students</button>
+
+</div>
+
+
+<div class="converter">
+
+<h3>Lowercase → Uppercase Converter</h3>
+
+<input type="text" id="textInput" placeholder="enter lowercase text">
+
+<button onclick="convertUpper()">Convert</button>
+
+</div>
+
+
+<div class="products">
+
+<h3>Market Products</h3>
+
+<button onclick="findProduct()">Find Product (ID=3)</button>
+
+<button onclick="electronicsProducts()">Electronics Products</button>
+
+<button onclick="sortPrice()">Sort By Price</button>
+
+<button onclick="calculateTotal()">Total Cart Price</button>
+
+</div>
+
+
+<h3>Output</h3>
+
+<div id="output"></div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
