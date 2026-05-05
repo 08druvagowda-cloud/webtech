@@ -48,6 +48,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <h2>Get In Touch</h2>
 <p>Feel free to contact me for any inquiries.</p>
+<div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #ddd;">
+    <p><strong>Name:</strong> DRUVA N GOWDA</p>
+    <p><strong>Phone:</strong> 7975574113</p>
+    <p><strong>Email:</strong> DRUVA@GMAIL.COM</p>
+</div>
 
 <!-- Show message -->
 <p style="color: green; font-weight: bold;">
